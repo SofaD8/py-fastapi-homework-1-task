@@ -22,6 +22,6 @@ api_version_prefix = "/api/v1"
 
 app.include_router(
     movies.router,
-    prefix=f"{api_version_prefix}/theater/movies",
+    prefix="/theater/movies",
     tags=["movies"]
 )
