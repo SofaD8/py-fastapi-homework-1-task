@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from database import init_db, close_db
-from routes import movie_router, movies
+from routes import movies
 
 
 @asynccontextmanager
@@ -15,10 +15,13 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="Movies homework",
-    description="Description of project",
     lifespan=lifespan
 )
 
 api_version_prefix = "/api/v1"
 
-app.include_router(movies.router, prefix=f"{api_version_prefix}/theater/movies", tags=["movies"])
+app.include_router(
+    movies.router,
+    prefix=f"{api_version_prefix}/theater/movies",
+    tags=["movies"]
+)
